@@ -5,7 +5,8 @@ import { hash32 } from '../../src/engine/rng';
 import { buildObservation } from '../../src/engine/observe';
 import type { DecisionRequest } from '../../src/protocol/types';
 import { createMatch } from '../../src/session/match';
-import { addGloom, addVein, makeState, put, testRules } from '../helpers';
+import { Coordinator } from '../../src/session/coordinator';
+import { addGloom, addPile, addVein, makeState, put, testRules } from '../helpers';
 
 const R = testRules();
 const req = (s: ReturnType<typeof makeState>, id = 0): DecisionRequest => ({
@@ -79,5 +80,34 @@ describe('bot:helper@1', () => {
     expect([...labels].some((l) => l.startsWith('Guarding') || l.startsWith('Fighting'))).toBe(true);
     expect(coordinator.state.result).not.toBeNull();
     expect(recorder.rounds).toBe(coordinator.state.round);
+  });
+});
+
+describe('review M1 #4: helper recovers loose Ember once veins are exhausted', () => {
+  it('empty-handed on or next to a pile, with no veins left, it picks the Ember up', () => {
+    const s = makeState(1); // the open test cave has no veins
+    expect(s.veins).toEqual([]);
+    put(s, 0, 2, 2);
+    const p = addPile(s, 2, 2);
+    s.round = 1;
+    expect(new HelperBot().decide(req(s)).action).toEqual({ t: 'pickup', target: p });
+    put(s, 0, 3, 2);
+    expect(new HelperBot().decide(req(s)).action).toEqual({ t: 'pickup', target: p });
+  });
+
+  it('walks to the nearest reachable pile, picks it up and delivers it to the Hearth', async () => {
+    const s = makeState(1);
+    addVein(s, 10, 2, 0); // an exhausted vein
+    addPile(s, 2, 10, 2);
+    addPile(s, 9, 9, 1);
+    const fuel0 = s.hearth.fuel;
+    const c = new Coordinator({ state: s, rules: testRules(), seats: [{ controller: new HelperBot() }] });
+    const kinds: string[] = [];
+    for (let r = 0; r < 60 && c.state.piles.length > 0; r++) (await c.playRound()).events.forEach((e) => kinds.push(e.kind));
+    for (let r = 0; r < 20 && c.state.actors[0]!.carrying > 0; r++) (await c.playRound()).events.forEach((e) => kinds.push(e.kind));
+    expect(c.state.piles).toEqual([]);
+    expect(kinds.filter((k) => k === 'pickup').length).toBeGreaterThanOrEqual(2);
+    expect(kinds.filter((k) => k === 'deliver').length).toBe(3);
+    expect(c.state.hearth.fuel).toBe(fuel0 - Math.floor(c.state.round / 2) + 3 * 5); // burn on even rounds, +5 per Ember
   });
 });

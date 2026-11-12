@@ -144,9 +144,17 @@ export class HelperBot implements Controller {
     }
     if (best) return { order: { t: 'gather', vein: best.id }, label: `Gathering Ember (vein #${best.id})` };
 
-    // 8. Loose Ember anywhere reachable.
-    const pile = obs.entities.find((e) => e.kind === 'ember');
-    if (pile) return { order: { t: 'goTo', at: pile.pos }, label: 'Recovering dropped Ember' };
+    // 8. Loose Ember: pick it up when legal (underfoot or adjacent), else walk to the nearest reachable pile.
+    if (obs.legal.pickup.length > 0) {
+      return { order: { t: 'gather' }, action: { t: 'pickup', target: obs.legal.pickup[0]! }, label: 'Recovering dropped Ember' };
+    }
+    let pile: { pos: Pos; d: number } | null = null;
+    for (const e of obs.entities) {
+      if (e.kind !== 'ember') continue;
+      const d = fromMe.dist[e.pos.y * obs.map.w + e.pos.x]!;
+      if (d >= 0 && (!pile || d < pile.d)) pile = { pos: e.pos, d };
+    }
+    if (pile) return { order: { t: 'goTo', at: { x: pile.pos.x, y: pile.pos.y } }, label: 'Recovering dropped Ember' };
 
     return { order: guardHearth, label: 'Keeping watch by the Hearth' };
   }

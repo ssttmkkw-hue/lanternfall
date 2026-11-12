@@ -14,6 +14,18 @@ export interface SessionView {
   pings?: readonly { from: ActorId; ping: Ping; round: number }[];
 }
 
+/** Recursively freezes a plain-JSON value in place and returns it. */
+export function deepFreeze<T>(v: T): T {
+  if (typeof v === 'object' && v !== null && !Object.isFrozen(v)) {
+    Object.freeze(v);
+    for (const k of Object.keys(v)) deepFreeze((v as Record<string, unknown>)[k]);
+  }
+  return v;
+}
+
+/** Detached deep copy of plain JSON session data (orders, pings), so controllers never hold live references. */
+const detach = <T>(v: T): T => (v === null || v === undefined ? v : (JSON.parse(JSON.stringify(v)) as T));
+
 export function terrainRows(state: GameState): string[] {
   const rows: string[] = [];
   for (let y = 0; y < state.h; y++) {
@@ -37,7 +49,12 @@ export function forecastOf(state: GameState, rules: ModeRules): { surgeInRounds:
   return inRounds <= rules.params.forecastDirWithin ? { surgeInRounds: inRounds, from: next.from } : { surgeInRounds: inRounds };
 }
 
+/** Builds a detached, deeply frozen observation: mutating it can never reach session or engine data. */
 export function buildObservation(state: GameState, actorId: ActorId, rules: ModeRules, session: SessionView = {}): Observation {
+  return deepFreeze(buildObservationRaw(state, actorId, rules, session));
+}
+
+function buildObservationRaw(state: GameState, actorId: ActorId, rules: ModeRules, session: SessionView): Observation {
   const me = state.actors.find((a) => a.id === actorId);
   if (!me) throw new Error(`buildObservation: unknown actor ${actorId}`);
   const round = state.round + 1;
@@ -49,7 +66,7 @@ export function buildObservation(state: GameState, actorId: ActorId, rules: Mode
   const allVisible: string[] = [];
   for (let y = 0; y < state.h; y++) allVisible.push('1'.repeat(state.w));
   const orders: Record<ActorId, Order | null> = {};
-  for (const a of state.actors) if (a.team === me.team) orders[a.id] = session.orders?.[a.id] ?? null;
+  for (const a of state.actors) if (a.team === me.team) orders[a.id] = detach(session.orders?.[a.id] ?? null);
   const events: ObservedEvent[] = (session.events ?? []).map((e) => ({ round: e.round, kind: e.kind, text: e.text }));
 
   return {
@@ -73,7 +90,7 @@ export function buildObservation(state: GameState, actorId: ActorId, rules: Mode
       cooldown: me.cooldown,
       status: me.status,
       respawnIn: me.status === 'snuffed' ? me.respawnIn : null,
-      order: session.orders?.[me.id] ?? null,
+      order: detach(session.orders?.[me.id] ?? null),
     },
     map: { w: state.w, h: state.h, terrain: terrainRows(state), lit: rowsOf(state.lit), visible: allVisible },
     actors: state.actors
@@ -97,9 +114,9 @@ export function buildObservation(state: GameState, actorId: ActorId, rules: Mode
       gloomPaths: state.gloom.map((g) => ({ id: g.id, next: g.path.slice(0, rules.params.forecastPathLen).map((p) => ({ ...p })) })),
     },
     team: { orders },
-    pings: (session.pings ?? []).filter((p) => round - p.round <= 5).map((p) => ({ from: p.from, ping: p.ping, round: p.round })),
+    pings: (session.pings ?? []).filter((p) => round - p.round <= 5).map((p) => ({ from: p.from, ping: detach(p.ping), round: p.round })),
     events,
     chat: [],
-    legal: computeLegal(state, actorId, rules),
+    legal: detach(computeLegal(state, actorId, rules)),
   };
 }

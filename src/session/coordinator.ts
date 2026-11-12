@@ -4,14 +4,14 @@ import { hashState } from '../engine/check';
 import type { EngineEvent } from '../engine/events';
 import { hash32 } from '../engine/rng';
 import type { ModeRules } from '../engine/modes/types';
-import { buildObservation } from '../engine/observe';
+import { buildObservation, deepFreeze } from '../engine/observe';
 import type { GameState } from '../engine/state';
 import { step } from '../engine/step';
 import { executeOrder } from '../controllers/executor';
 import type {
   AcceptedAction, Action, ActorId, Controller, Decision, DecisionRequest, Observation, Order, Ping, RoundInput,
 } from '../protocol/types';
-import { actionInLegal, validateDecision } from '../protocol/validate';
+import { LIMITS, actionInLegal, validateDecision } from '../protocol/validate';
 import type { Clock, TimerHandle } from './clock';
 import { CONTROLLER_TIMEOUT_MS, type Pacing, TACTICAL } from './pacing';
 import type { ReplayRecorder } from './replay';
@@ -44,7 +44,12 @@ export interface RoundOutcome {
 
 interface OpenEntry {
   actorId: ActorId;
+  /** Authoritative round-start observation: used for validation and the executor, never handed out. */
+  obs: Observation;
+  /** What the controller sees: a detached, deeply frozen copy (request included). */
   req: DecisionRequest;
+  /** Per-request signal: aborted on this request's timeout, or when the round completes. */
+  abort: AbortController;
   decision: Decision | null;
   settled: boolean;
   expired: boolean;
@@ -69,7 +74,6 @@ export class Coordinator {
   private readonly timeouts: Record<Controller['kind'], number | null>;
   private readonly recorder: ReplayRecorder | undefined;
   private readonly nodeBudget: number;
-  private abort: AbortController | null = null;
   private open: OpenEntry[] = [];
   private settleWaiter: (() => void) | null = null;
   private busy = false;
@@ -100,19 +104,36 @@ export class Coordinator {
     });
   }
 
-  private requestFor(actorId: ActorId): DecisionRequest {
+  private entryFor(actorId: ActorId): OpenEntry {
     const round = this.state.round + 1;
-    return {
+    const obs = this.observationFor(actorId);
+    const req: DecisionRequest = deepFreeze({
       requestId: `${this.state.matchId}:${round}:${actorId}`,
-      observation: this.observationFor(actorId),
+      observation: deepFreeze(JSON.parse(JSON.stringify(obs)) as Observation),
       decisionSeed: hash32(this.state.seed, round, actorId),
       budget: { nodes: this.nodeBudget, deadlineMs: null },
-    };
+    });
+    return { actorId, obs, req, abort: new AbortController(), decision: null, settled: false, expired: false, timer: null };
+  }
+
+  private validate(raw: unknown, e: OpenEntry) {
+    const obs = e.obs;
+    return validateDecision(raw, {
+      requestId: e.req.requestId, legal: obs.legal, allowList: this.rules.allowList, chat: this.rules.chat, w: obs.map.w, h: obs.map.h,
+    });
+  }
+
+  private rejectReason(reason: string): RejectReason {
+    return reason.startsWith('illegal') ? 'illegal' : reason.startsWith('stale') ? 'stale' : 'malformed';
   }
 
   /** Push-style submission (e.g. remote controllers). The first valid decision per requestId counts. */
   submit(raw: unknown): boolean {
-    return this.accept(raw, false);
+    const rid = (raw as { requestId?: unknown } | null)?.requestId;
+    if (typeof rid !== 'string') return this.reject('malformed');
+    const e = this.open.find((x) => x.req.requestId === rid);
+    if (!e) return this.reject('stale');
+    return this.accept(raw, e, false);
   }
 
   private reject(reason: RejectReason): false {
@@ -120,18 +141,13 @@ export class Coordinator {
     return false;
   }
 
-  private accept(raw: unknown, fromDecide: boolean, expectedId?: string): boolean {
-    const rid = (raw as { requestId?: unknown } | null)?.requestId;
-    const id = typeof rid === 'string' ? rid : expectedId;
-    const e = this.open.find((x) => x.req.requestId === id);
-    if (!e) return this.reject(typeof rid === 'string' ? 'stale' : 'malformed');
+  /** Validates `raw` against entry `e`. Pull replies (from decide) are bound to the entry that issued the
+   *  request: a reply carrying any other requestId is rejected as stale and settles `e` to the fallback. */
+  private accept(raw: unknown, e: OpenEntry, fromDecide: boolean): boolean {
     if (e.settled) return this.reject(e.expired ? 'late' : 'duplicate');
-    const obs = e.req.observation;
-    const v = validateDecision(raw, {
-      requestId: e.req.requestId, legal: obs.legal, allowList: this.rules.allowList, chat: this.rules.chat, w: obs.map.w, h: obs.map.h,
-    });
+    const v = this.validate(raw, e);
     if (!v.ok) {
-      this.reject(v.reason.startsWith('illegal') ? 'illegal' : v.reason.startsWith('stale') ? 'stale' : 'malformed');
+      this.reject(this.rejectReason(v.reason));
       // A pull-style reply gets one shot; settle it so the round can continue to the fallback.
       if (fromDecide) this.settle(e, null, false);
       return false;
@@ -147,6 +163,7 @@ export class Coordinator {
     e.decision = d;
     if (e.timer !== null && this.clock) this.clock.clearTimeout(e.timer);
     e.timer = null;
+    if (expired) e.abort.abort(); // the timed-out controller's signal fires now, not at round end
     if (this.open.every((x) => x.settled) && this.settleWaiter) {
       const w = this.settleWaiter;
       this.settleWaiter = null;
@@ -166,17 +183,15 @@ export class Coordinator {
     this.busy = true;
     try {
       const round = this.state.round + 1;
-      this.abort?.abort();
-      const abort = new AbortController();
-      this.abort = abort;
-      this.open = this.state.actors.map((a) => ({ actorId: a.id, req: this.requestFor(a.id), decision: null, settled: false, expired: false, timer: null }));
+      for (const e of this.open) e.abort.abort(); // anything outstanding from earlier rounds
+      this.open = this.state.actors.map((a) => this.entryFor(a.id));
       const allSettled = new Promise<void>((res) => { this.settleWaiter = res; });
 
       for (const e of this.open) {
         const seat = this.seats[e.actorId]!;
         let r: Decision | Promise<Decision>;
         try {
-          r = seat.controller.decide(e.req, abort.signal);
+          r = seat.controller.decide(e.req, e.abort.signal);
         } catch {
           this.rejected.error++;
           this.settle(e, null, false);
@@ -190,11 +205,11 @@ export class Coordinator {
             }, timeout);
           }
           (r as Promise<Decision>).then(
-            (d) => { if (abort.signal.aborted) this.rejected.late++; else this.accept(d, true, e.req.requestId); },
-            () => { if (!e.settled && !abort.signal.aborted) { this.rejected.error++; this.settle(e, null, false); } },
+            (d) => { if (e.abort.signal.aborted) this.rejected.late++; else this.accept(d, e, true); },
+            () => { if (!e.settled && !e.abort.signal.aborted) { this.rejected.error++; this.settle(e, null, false); } },
           );
         } else {
-          this.accept(r, true, e.req.requestId);
+          this.accept(r, e, true);
         }
       }
       if (this.open.every((x) => x.settled)) this.settleWaiter = null;
@@ -204,11 +219,11 @@ export class Coordinator {
       const accepted: AcceptedAction[] = [];
       const clearAfter: ActorId[] = [];
       for (const e of this.open) {
-        const a = this.chooseAction(e, abort.signal, clearAfter);
+        const a = this.chooseAction(e, clearAfter);
         if (a) accepted.push(a);
       }
-      abort.abort(); // nothing outstanding may answer for this round any more
-      this.open = this.open.map((e) => ({ ...e, settled: true, expired: true }));
+      // Nothing outstanding may answer for this round any more.
+      for (const e of this.open) { e.abort.abort(); e.settled = true; e.expired = true; }
 
       const input: RoundInput = { round, actions: accepted };
       const res = step(this.state, accepted, this.rules);
@@ -223,18 +238,21 @@ export class Coordinator {
     }
   }
 
-  private chooseAction(e: OpenEntry, signal: AbortSignal, clearAfter: ActorId[]): AcceptedAction | null {
+  private chooseAction(e: OpenEntry, clearAfter: ActorId[]): AcceptedAction | null {
     const id = e.actorId;
-    const obs = e.req.observation;
+    const obs = e.obs;
     const seat = this.seats[id]!;
     const d = e.decision;
+    if (obs.self.status === 'snuffed') {
+      // §2.1.3: a Snuffed actor has no Order until it respawns; decisions may not reinstall one.
+      this.orders[id] = null;
+      if (d?.label !== undefined) this.labels[id] = d.label;
+      this.sources[id] = 'idle';
+      return { actor: id, action: { t: 'wait' }, source: 'idle' };
+    }
     if (d) {
       if (d.order !== undefined) this.orders[id] = d.order;
       if (d.label !== undefined) this.labels[id] = d.label;
-    }
-    if (obs.self.status === 'snuffed') {
-      this.sources[id] = 'idle';
-      return { actor: id, action: { t: 'wait' }, source: 'idle' };
     }
     const ping = d?.ping;
     if (ping) this.pings.push({ from: id, ping, round: e.req.observation.round });
@@ -254,10 +272,18 @@ export class Coordinator {
     }
     if (seat.controller.kind !== 'human' && seat.companion) {
       try {
-        const c = seat.companion.decide(e.req, signal);
-        if (!(c instanceof Promise) && c.action && actionInLegal(c.action, obs.legal) && this.rules.allowList.includes(c.action.t)) {
-          this.labels[id] = c.label ? `${c.label} (fallback)` : 'Fallback';
-          return mk(c.action, 'fallback');
+        // Fresh signal: the seat's own may already be aborted by its timeout.
+        const raw = seat.companion.decide(e.req, new AbortController().signal);
+        if (raw && typeof (raw as Promise<Decision>).then === 'function') {
+          this.rejected.error++; // companions must be synchronous
+        } else {
+          // Companions are controllers too: same runtime validation, and only the clean copy is used.
+          const v = this.validate(raw, e);
+          if (!v.ok) this.reject(this.rejectReason(v.reason));
+          else if (v.decision.action) {
+            this.labels[id] = fallbackLabel(v.decision.label);
+            return mk(v.decision.action, 'fallback');
+          }
         }
       } catch {
         this.rejected.error++;
@@ -274,8 +300,16 @@ export class Coordinator {
 
   dispose(): void {
     this.disposed = true;
-    this.abort?.abort();
+    for (const e of this.open) e.abort.abort();
     if (this.settleWaiter) { const w = this.settleWaiter; this.settleWaiter = null; w(); }
     for (const s of this.seats) { s.controller.dispose?.(); s.companion?.dispose?.(); }
   }
+}
+
+const FALLBACK_SUFFIX = ' (fallback)';
+
+/** Companion label with the fallback marker, capped at the protocol label limit. */
+export function fallbackLabel(label: string | undefined): string {
+  if (!label) return 'Fallback';
+  return label.slice(0, LIMITS.label - FALLBACK_SUFFIX.length) + FALLBACK_SUFFIX;
 }

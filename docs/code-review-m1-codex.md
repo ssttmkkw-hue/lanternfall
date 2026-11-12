@@ -67,3 +67,59 @@ Priorities: P1 = correctness/trust boundary; P2 = scoped bug or coverage gap.
    before retrying or introducing its newer wave, so it never checks FIFO retry.
    Fix: build a known nonempty path and assert the exact first five positions;
    advance the queue scenario into the next wave and assert placement/queue order.
+
+## Resolution
+
+All 8 findings are fixed. Each new test was confirmed to fail against the pre-fix `src/` (except
+the test-only finding 8 and one regression guard in #5). Validation: `npm run build` ok,
+`npm test` 117/117 (was 98), `npm run headless -- --seed 1 --n 100` gives 100/100 wins with no invalid
+state. The golden replay is unchanged.
+
+1. **Pull replies bound to their seat** (`session/coordinator.ts`). `accept()` now takes the
+   originating `OpenEntry`. Pull replies are validated against that entry's `requestId` only. A
+   stale or cross-seat id is rejected as `stale` and settles the originating seat to the fallback,
+   so a sync bot can't stall the round or decide another seat. Push `submit()` still looks entries
+   up by the supplied id. Tests: sync stale id (no stall), sync cross-seat, async cross-seat plus
+   async stale.
+2. **Detached, frozen observations** (`engine/observe.ts`, `session/coordinator.ts`).
+   `buildObservation` deep-copies session orders and pings and the legal set, then deep-freezes the
+   result. The coordinator keeps the authoritative observation private (`OpenEntry.obs`, used for
+   validation and the executor). Each controller gets its own frozen `DecisionRequest`, with a
+   separate frozen observation clone. Tests: malicious writes (order, team orders, `legal`,
+   `requestId`) all throw, leave the order unchanged and don't alter legality; no aliasing of session
+   data; seats get distinct, frozen copies.
+3. **Replay schema validation** (`session/replay.ts`). New `replaySchemaError()` checks the header
+   (strings, bounded integer `seed`/`protocolVersion`), the roster (1–8 entries, ids in order, known
+   roles), every round record and action (`parseAction`/`parsePing` shapes, actor range, no
+   duplicates, source enum, no extra keys), the checkpoints and `result`. `parseReplay` throws
+   `malformed replay: …`, and `verifyReplay` runs the same check and never throws. `verifyReplay`
+   also rejects mode mismatches, actions outside the mode allow-list, rounds after the match ended
+   and checkpoints whose hash disagrees with their round. It catches errors from `step`, and fails
+   when the declared `result` differs from the derived one. Tests: 22 malformed-import cases, bypass
+   objects, a disallowed action, a tampered, truncated or nulled result, trailing rounds, and a
+   tampered checkpoint.
+4. **Helper recovers loose Ember** (`controllers/bots/helper.ts`). When no vein is viable, the helper
+   picks up a pile if it is legal now (underfoot or adjacent). Otherwise it travels to the nearest
+   *reachable* pile by BFS. Tests: pickup on or next to a pile with no veins; a full recovery run
+   with an exhausted vein (all piles picked up, 3 deliveries, exact Hearth accounting).
+5. **Per-request abort signals** (`session/coordinator.ts`). Each `OpenEntry` owns an
+   `AbortController`, aborted on its own timeout, on round completion, at the start of the next
+   round and on `dispose()`. Companions get a fresh signal. Tests: the expired LLM signal is aborted
+   while a human seat is still pending; round completion and dispose abort every signal.
+6. **Companion validation** (`session/coordinator.ts`). Companion output now goes through
+   `validateDecision` against the authoritative observation, including the requestId check. Only
+   the clean copy is used and rejections are counted. Async companions count as errors. The final
+   label is capped at 48 chars by `fallbackLabel()`. Tests: extra action fields, unknown keys, an
+   over-long label, a wrong id, an illegal action, and a valid one (clean copy, capped label).
+7. **No orders while snuffed** (`session/coordinator.ts`). The snuffed check now runs before
+   decision metadata is applied. While snuffed, the order is forced to `null`, and only the label is
+   kept. Test: orders stay `null` from the snuff round through the respawn round, and can be set
+   again afterwards.
+8. **Forecast/queue tests** (`tests/unit/hold.test.ts`). The forecast test uses a known 7-tile path
+   and asserts the exact first five tiles. A second test checks that the real planner's path is
+   ≥5 tiles and that `next` equals its first five. The queue test continues into round 2, where a
+   newer wave arrives with one free point: the queued wave-0 creature takes it and the queue becomes
+   `[wave 0, wave 1]`. In round 3 everything is free and the creatures are placed in FIFO order.
+
+Small supporting change: `parsePing` is now exported from `protocol/validate.ts` so replay
+validation can reuse it.

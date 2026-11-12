@@ -4,6 +4,7 @@ import { HOLD_M1_MAP } from '../../src/content/maps/hold-m1';
 import { createInitialState } from '../../src/engine/init';
 import { HOLD_M1 } from '../../src/engine/modes/hold';
 import { buildObservation, forecastOf } from '../../src/engine/observe';
+import { recomputeGloomPaths } from '../../src/engine/resolve/gloom';
 import { step } from '../../src/engine/step';
 import { type GameState, TERRAIN_FLOOR, idx } from '../../src/engine/state';
 import { acts, testRules } from '../helpers';
@@ -99,12 +100,26 @@ describe('Hold schedule', () => {
     expect(forecastOf(s, HOLD_M1)).toEqual({ surgeInRounds: null });
   });
 
-  it('gloomPaths show each Gloomling\'s next 5 tiles', () => {
+  it('gloomPaths show exactly each Gloomling\'s next 5 tiles of a known path', () => {
     const s = holdState();
-    s.gloom.push({ id: 99, pos: { x: 1, y: 6 }, hp: 2, path: [] });
+    const path = [2, 3, 4, 5, 6, 7, 8].map((x) => ({ x, y: 6 }));
+    s.gloom.push({ id: 99, pos: { x: 1, y: 6 }, hp: 2, path });
     s.round = 41;
     const o = buildObservation(s, 0, HOLD_M1);
-    expect(o.forecast.gloomPaths[0]!.next.length).toBeLessThanOrEqual(5);
+    expect(o.forecast.gloomPaths).toEqual([{ id: 99, next: path.slice(0, 5) }]);
+  });
+
+  it('gloomPaths from the real planner: the first 5 tiles of the BFS path toward the Hearth', () => {
+    const s = holdState();
+    s.gloom.push({ id: 99, pos: { ...s.spawns.W[0]! }, hp: 2, path: [] });
+    recomputeGloomPaths(s);
+    const full = s.gloom[0]!.path;
+    expect(full.length).toBeGreaterThan(5);
+    // starts adjacent to the spawn point, one tile per step
+    expect(Math.abs(full[0]!.x - 1) + Math.abs(full[0]!.y - 6)).toBe(1);
+    const next = buildObservation(s, 0, HOLD_M1).forecast.gloomPaths[0]!.next;
+    expect(next).toHaveLength(5);
+    expect(next).toEqual(full.slice(0, 5));
   });
 
   it('spawn queue: occupied points are skipped; unplaced creatures retry later, before newer waves', () => {
@@ -115,6 +130,25 @@ describe('Hold schedule', () => {
     s = step(s, acts([0, { t: 'wait' }]), rules).state;
     // only W[3] was free: 1 of wave 0 placed, 2 queued
     expect(s.spawnQueue).toEqual([{ wave: 0, from: 'W' }, { wave: 0, from: 'W' }]);
+    expect(s.gloom.at(-1)!.pos).toEqual(s.spawns.W[3]);
+
+    // Round 2: the newer wave (1) arrives while one point (W[1]) is free. The queued wave-0 creature
+    // retries first and takes it; the newer wave queues behind the remaining wave-0 creature (FIFO).
+    s.gloom = s.gloom.filter((g) => !(g.pos.x === s.spawns.W[1]!.x && g.pos.y === s.spawns.W[1]!.y));
+    for (const g of s.gloom) g.path = []; // blockers hold their spawn points
+    const before = s.nextId;
+    s = step(s, acts([0, { t: 'wait' }]), rules).state;
+    expect(s.spawnQueue).toEqual([{ wave: 0, from: 'W' }, { wave: 1, from: 'W' }]);
+    expect(s.gloom.filter((g) => g.id >= before).map((g) => g.pos)).toEqual([s.spawns.W[1]]);
+
+    // Round 3: everything free. The wave-0 creature is placed before the wave-1 one, in ascending points.
+    s.gloom = [];
+    s.actors[0]!.pos = { x: 8, y: 7 };
+    const mid = s.nextId;
+    s = step(s, acts([0, { t: 'wait' }]), rules).state;
+    expect(s.spawnQueue).toEqual([]);
+    const placed = s.gloom.filter((g) => g.id >= mid).sort((a, b) => a.id - b.id);
+    expect(placed.map((g) => g.pos)).toEqual([s.spawns.W[0], s.spawns.W[1]]);
   });
 
   it('end precedence: loss beats win in the same round; win when Surge 3 fully spawned and cleared; dawn at 160', () => {

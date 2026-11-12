@@ -112,7 +112,7 @@ export function parseOrder(v: unknown, ctx: ValidateContext): Order | string {
   }
 }
 
-function parsePing(v: unknown, ctx: ValidateContext): Ping | string {
+export function parsePing(v: unknown, ctx: ValidateContext): Ping | string {
   if (!isObj(v) || !onlyKeys(v, ['kind', 'at']) || typeof v.kind !== 'string' || !PING_KINDS.includes(v.kind) || !posOk(v.at, ctx)) return 'ping: malformed';
   return { kind: v.kind as Ping['kind'], at: { x: v.at.x, y: v.at.y } };
 }

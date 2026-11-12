@@ -107,3 +107,90 @@ describe('determinism', () => {
     }
   });
 });
+
+describe('review M1 #3: replay import is schema-validated; derived state must match', () => {
+  let base: Replay;
+  const fresh = async (): Promise<Replay> => {
+    if (!base) base = (await play(4)).replay;
+    return JSON.parse(JSON.stringify(base)) as Replay;
+  };
+  const mutate = async (f: (r: any) => void): Promise<string> => {
+    const r = await fresh();
+    f(r);
+    return JSON.stringify(r);
+  };
+
+  it('malformed nested fields are rejected at import with a clear error', async () => {
+    const cases: [string, (r: any) => void][] = [
+      ['missing roster', (r) => { delete r.header.roster; }],
+      ['empty roster', (r) => { r.header.roster = []; }],
+      ['roster entry with a bad role', (r) => { r.header.roster[0].role = 'wizard'; }],
+      ['roster ids out of order', (r) => { r.header.roster[0].id = 5; }],
+      ['missing header', (r) => { delete r.header; }],
+      ['non-integer seed', (r) => { r.header.seed = 1.5; }],
+      ['negative seed', (r) => { r.header.seed = -1; }],
+      ['string protocolVersion', (r) => { r.header.protocolVersion = '1'; }],
+      ['null round record', (r) => { r.rounds[3] = null; }],
+      ['null input', (r) => { r.rounds[3].input = null; }],
+      ['null actions', (r) => { r.rounds[3].input.actions = null; }],
+      ['null action entry', (r) => { r.rounds[3].input.actions[0] = null; }],
+      ['unknown action type', (r) => { r.rounds[3].input.actions[0].action = { t: 'teleport' }; }],
+      ['extra action field', (r) => { r.rounds[3].input.actions[0].action = { t: 'wait', x: 1 }; }],
+      ['actor out of roster', (r) => { r.rounds[3].input.actions[0].actor = 7; }],
+      ['duplicate actor', (r) => { r.rounds[3].input.actions[1] = r.rounds[3].input.actions[0]; }],
+      ['bad source', (r) => { r.rounds[3].input.actions[0].source = 'cheat'; }],
+      ['fractional round', (r) => { r.rounds[3].input.round = 3.5; }],
+      ['missing hash', (r) => { delete r.rounds[3].hash; }],
+      ['checkpoint without state', (r) => { r.checkpoints[0].state = null; }],
+      ['checkpoint beyond the rounds', (r) => { r.checkpoints[0].round = 99_999; }],
+      ['unknown result', (r) => { r.result = 'victory'; }],
+    ];
+    for (const [name, f] of cases) {
+      const text = await mutate(f);
+      expect(() => parseReplay(text), name).toThrow(/malformed replay/);
+    }
+    expect(() => parseReplay('{not json')).toThrow(/malformed replay: not JSON/);
+    expect(() => parseReplay('null')).toThrow(/malformed replay/);
+  });
+
+  it('verifyReplay never throws on malformed objects that bypass parseReplay', async () => {
+    const r = await fresh();
+    delete (r.header as any).roster;
+    expect(verifyReplay(r, MAPS, HOLD_M1)).toMatchObject({ ok: false, error: expect.stringMatching(/malformed replay/) });
+    const r2 = await fresh();
+    (r2.rounds as any)[5] = null;
+    expect(verifyReplay(r2, MAPS, HOLD_M1)).toMatchObject({ ok: false, error: expect.stringMatching(/malformed replay/) });
+  });
+
+  it('actions outside the mode allow-list are rejected before simulation', async () => {
+    const r = await fresh();
+    (r.rounds[3]!.input.actions as any)[0].action = { t: 'build', kind: 'beacon', at: { x: 2, y: 2 } };
+    const v = verifyReplay(parseReplay(JSON.stringify(r)), MAPS, HOLD_M1);
+    expect(v.ok).toBe(false);
+    expect(v.error).toMatch(/not allowed/);
+  });
+
+  it('a declared result that disagrees with the replayed state is rejected', async () => {
+    const r = await fresh();
+    expect(r.result).not.toBeNull();
+    r.result = r.result === 'loss' ? 'win' : 'loss';
+    expect(verifyReplay(parseReplay(JSON.stringify(r)), MAPS, HOLD_M1).error).toMatch(/declared result/);
+    const truncated = await fresh(); // claims the final result but stops early
+    truncated.rounds.pop();
+    expect(verifyReplay(parseReplay(JSON.stringify(truncated)), MAPS, HOLD_M1).error).toMatch(/declared result .* replayed result null/);
+    const nulled = await fresh();
+    nulled.result = null;
+    expect(verifyReplay(parseReplay(JSON.stringify(nulled)), MAPS, HOLD_M1).ok).toBe(false);
+  });
+
+  it('rounds recorded after the match ended, and tampered checkpoints, are rejected', async () => {
+    const r = await fresh();
+    const last = r.rounds.at(-1)!;
+    r.rounds.push({ input: { round: last.input.round + 1, actions: [] }, hash: last.hash });
+    expect(verifyReplay(parseReplay(JSON.stringify(r)), MAPS, HOLD_M1).error).toMatch(/after the match ended/);
+    const cp = await fresh();
+    expect(cp.checkpoints.length).toBeGreaterThan(0);
+    cp.checkpoints[0]!.state.hearth.fuel += 1;
+    expect(verifyReplay(parseReplay(JSON.stringify(cp)), MAPS, HOLD_M1).error).toMatch(/checkpoint/);
+  });
+});
