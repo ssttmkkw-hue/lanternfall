@@ -27,3 +27,4 @@ aside ul, aside ol { margin: 0; padding-left: 18px; }
 .warn { color: #ff9a6b; font-weight: bold; }
 .msg { color: #ff9a6b; min-height: 1.2em; }
 .log { font-size: 0.8rem; color: #c9bfae; }
+a { color: #ffcc66; }

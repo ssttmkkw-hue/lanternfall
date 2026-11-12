@@ -124,5 +124,6 @@ $('replay').onclick = downloadReplay;
 $('begin').onclick = () => { $('intro').hidden = true; void start(seedFromHash()); };
 window.addEventListener('keydown', (e) => {
   if ((e.key === 'Enter' || e.key === ' ') && !$('intro').hidden) { e.preventDefault(); $('begin').click(); }
-  if (e.key === 'r' && e.shiftKey) void start(newSeed());
+  // With Shift held, browsers report 'R' (or 'r' under Caps Lock). Ignored while the start card is up.
+  if ((e.key === 'R' || e.key === 'r') && e.shiftKey && $('intro').hidden) void start(newSeed());
 });
