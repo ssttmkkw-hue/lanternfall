@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'" />
+    <title>Lanternfall: Hold the Light</title>
+  </head>
+  <body>
+    <header>
+      <h1>Lanternfall <small>Hold the Light · M1 · Tactical</small></h1>
+      <nav>
+        <button id="lock" title="Lock your action (Enter)">Lock (Enter)</button>
+        <button id="restart" title="New match (Shift+R)">Restart</button>
+        <button id="replay" title="Download the replay JSON">Download replay</button>
+      </nav>
+    </header>
+    <main>
+      <div class="board-wrap"><canvas id="board" width="512" height="512" aria-label="Game board"></canvas>
+        <div id="overlay" hidden></div>
+        <div id="intro"><div class="card">
+          <h1>Hold the Light</h1>
+          <p>The world above has gone dark. You (<b>Y</b>, blue) and your bot teammate (<b>B1</b>, green) must keep the
+            <b>Hearth</b> burning for 160 rounds while three Surges of Gloomlings come for it.</p>
+          <ul>
+            <li>Mine <b>Ember</b> from veins (red, number = Ember left) and feed it to the Hearth (+5 fuel).</li>
+            <li>Your lantern drains 1 per round outside Hearth light and refills inside it.</li>
+            <li>Gloomlings (purple, dotted path shown) drain the Hearth. Strike them: 2 hits each.</li>
+          </ul>
+          <p><b>Keys:</b> Arrows/WASD move · <b>E</b> mine / deliver / pick up · <b>F</b> strike · <b>Q</b> drop ·
+            <b>Space</b> wait · <b>Enter</b> lock · <b>Z</b> undo · <b>T</b> toggle quick-lock · <b>Shift+R</b> restart</p>
+          <p><small>Rounds are simultaneous and wait for you. With quick-lock on (default), each action key locks your
+            move immediately; turn it off to choose, undo, and lock with Enter.</small></p>
+          <p><button id="begin">Start match (Enter)</button></p>
+        </div></div>
+      </div>
+      <aside id="hud" aria-live="off"></aside>
+    </main>
+    <script type="module" src="/src/app/main.ts"></script>
+  </body>
+</html>

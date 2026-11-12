@@ -1,0 +1,4645 @@
+{
+ "header": {
+  "format": "lanternfall-replay",
+  "engineVersion": "lanternfall-engine@1.0.0-m1",
+  "protocolVersion": 1,
+  "contentHash": "026f9a66",
+  "seed": 1,
+  "mode": "hold",
+  "mapId": "hold-m1",
+  "matchId": "golden-1",
+  "roster": [
+   {
+    "id": 0,
+    "team": 0,
+    "role": "lanterner",
+    "controller": "bot:helper@1"
+   },
+   {
+    "id": 1,
+    "team": 0,
+    "role": "lanterner",
+    "controller": "bot:helper@1"
+   }
+  ],
+  "initialHash": "49121e96"
+ },
+ "rounds": [
+  {
+   "input": {
+    "round": 1,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "bfbff9ce"
+  },
+  {
+   "input": {
+    "round": 2,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "mine",
+       "target": 4
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "b5f49182"
+  },
+  {
+   "input": {
+    "round": 3,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "a61200b2"
+  },
+  {
+   "input": {
+    "round": 4,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "deliver",
+       "target": 1
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "c60e3786"
+  },
+  {
+   "input": {
+    "round": 5,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "601d19ad"
+  },
+  {
+   "input": {
+    "round": 6,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "ad1257cf"
+  },
+  {
+   "input": {
+    "round": 7,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "mine",
+       "target": 4
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "36039b2d"
+  },
+  {
+   "input": {
+    "round": 8,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "c59c7815"
+  },
+  {
+   "input": {
+    "round": 9,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "0cbb72f4"
+  },
+  {
+   "input": {
+    "round": 10,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "mine",
+       "target": 5
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "7944eebc"
+  },
+  {
+   "input": {
+    "round": 11,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "deliver",
+       "target": 1
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "04cb33b8"
+  },
+  {
+   "input": {
+    "round": 12,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "95fdf54a"
+  },
+  {
+   "input": {
+    "round": 13,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "mine",
+       "target": 4
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "9822e803"
+  },
+  {
+   "input": {
+    "round": 14,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "deliver",
+       "target": 1
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "3a285328"
+  },
+  {
+   "input": {
+    "round": 15,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "deliver",
+       "target": 1
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "5bb5e4ec"
+  },
+  {
+   "input": {
+    "round": 16,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "a470d39e"
+  },
+  {
+   "input": {
+    "round": 17,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "39f75b71"
+  },
+  {
+   "input": {
+    "round": 18,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "mine",
+       "target": 5
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "da3567e6"
+  },
+  {
+   "input": {
+    "round": 19,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "0cbfcc76"
+  },
+  {
+   "input": {
+    "round": 20,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "2de66cec"
+  },
+  {
+   "input": {
+    "round": 21,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "mine",
+       "target": 5
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "57750595"
+  },
+  {
+   "input": {
+    "round": 22,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "deliver",
+       "target": 1
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "826f036b"
+  },
+  {
+   "input": {
+    "round": 23,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "25268de3"
+  },
+  {
+   "input": {
+    "round": 24,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "a9cfb1d2"
+  },
+  {
+   "input": {
+    "round": 25,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "89e915f2"
+  },
+  {
+   "input": {
+    "round": 26,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "deliver",
+       "target": 1
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "f2ffd605"
+  },
+  {
+   "input": {
+    "round": 27,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "3889324d"
+  },
+  {
+   "input": {
+    "round": 28,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "de5bd025"
+  },
+  {
+   "input": {
+    "round": 29,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "mine",
+       "target": 8
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "9a6dafda"
+  },
+  {
+   "input": {
+    "round": 30,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "82b6b774"
+  },
+  {
+   "input": {
+    "round": 31,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "b897a01e"
+  },
+  {
+   "input": {
+    "round": 32,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "95146c73"
+  },
+  {
+   "input": {
+    "round": 33,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "mine",
+       "target": 8
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "1bb4cff3"
+  },
+  {
+   "input": {
+    "round": 34,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "deliver",
+       "target": 1
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "8db992fd"
+  },
+  {
+   "input": {
+    "round": 35,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "ccea9177"
+  },
+  {
+   "input": {
+    "round": 36,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "f7370cb3"
+  },
+  {
+   "input": {
+    "round": 37,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "c72cdf02"
+  },
+  {
+   "input": {
+    "round": 38,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "deliver",
+       "target": 1
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "5966ee3b"
+  },
+  {
+   "input": {
+    "round": 39,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "a9443e72"
+  },
+  {
+   "input": {
+    "round": 40,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "06d52190"
+  },
+  {
+   "input": {
+    "round": 41,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "e5798168"
+  },
+  {
+   "input": {
+    "round": 42,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "5c40c482"
+  },
+  {
+   "input": {
+    "round": 43,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "ee0cd03a"
+  },
+  {
+   "input": {
+    "round": 44,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "4044097b"
+  },
+  {
+   "input": {
+    "round": 45,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "142714bb"
+  },
+  {
+   "input": {
+    "round": 46,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "94bac40e"
+  },
+  {
+   "input": {
+    "round": 47,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "strike",
+       "target": 10
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "f92fe694"
+  },
+  {
+   "input": {
+    "round": 48,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "strike",
+       "target": 10
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "68934880"
+  },
+  {
+   "input": {
+    "round": 49,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "strike",
+       "target": 9
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "4f1e1b11"
+  },
+  {
+   "input": {
+    "round": 50,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "strike",
+       "target": 9
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "1e590b4d"
+  },
+  {
+   "input": {
+    "round": 51,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "df025b42"
+  },
+  {
+   "input": {
+    "round": 52,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "9ce12cd1"
+  },
+  {
+   "input": {
+    "round": 53,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "e1102b48"
+  },
+  {
+   "input": {
+    "round": 54,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "d844c748"
+  },
+  {
+   "input": {
+    "round": 55,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "e017c160"
+  },
+  {
+   "input": {
+    "round": 56,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "77e65d42"
+  },
+  {
+   "input": {
+    "round": 57,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "405988b2"
+  },
+  {
+   "input": {
+    "round": 58,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "3d4aa1e1"
+  },
+  {
+   "input": {
+    "round": 59,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "3380bd3e"
+  },
+  {
+   "input": {
+    "round": 60,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "mine",
+       "target": 8
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "35506e46"
+  },
+  {
+   "input": {
+    "round": 61,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "mine",
+       "target": 7
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "9311c724"
+  },
+  {
+   "input": {
+    "round": 62,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "f370643c"
+  },
+  {
+   "input": {
+    "round": 63,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "b19f2976"
+  },
+  {
+   "input": {
+    "round": 64,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "bde1d91a"
+  },
+  {
+   "input": {
+    "round": 65,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "deliver",
+       "target": 1
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "8e3cb99f"
+  },
+  {
+   "input": {
+    "round": 66,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "5bc78e07"
+  },
+  {
+   "input": {
+    "round": 67,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "9c3e687c"
+  },
+  {
+   "input": {
+    "round": 68,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "b8020e42"
+  },
+  {
+   "input": {
+    "round": 69,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "f17518b0"
+  },
+  {
+   "input": {
+    "round": 70,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "deliver",
+       "target": 1
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "mine",
+       "target": 8
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "f68182ac"
+  },
+  {
+   "input": {
+    "round": 71,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "c2592c4f"
+  },
+  {
+   "input": {
+    "round": 72,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "4835cdbf"
+  },
+  {
+   "input": {
+    "round": 73,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "6a178964"
+  },
+  {
+   "input": {
+    "round": 74,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "f75d8e37"
+  },
+  {
+   "input": {
+    "round": 75,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "deliver",
+       "target": 1
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "898a3534"
+  },
+  {
+   "input": {
+    "round": 76,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "047361ce"
+  },
+  {
+   "input": {
+    "round": 77,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "5b8b5186"
+  },
+  {
+   "input": {
+    "round": 78,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "40e7444a"
+  },
+  {
+   "input": {
+    "round": 79,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "d882355c"
+  },
+  {
+   "input": {
+    "round": 80,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "2191728c"
+  },
+  {
+   "input": {
+    "round": 81,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "381babf7"
+  },
+  {
+   "input": {
+    "round": 82,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "ab45285b"
+  },
+  {
+   "input": {
+    "round": 83,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "strike",
+       "target": 13
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "eb76b3ee"
+  },
+  {
+   "input": {
+    "round": 84,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "strike",
+       "target": 13
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "a054709c"
+  },
+  {
+   "input": {
+    "round": 85,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "strike",
+       "target": 12
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "1021feaf"
+  },
+  {
+   "input": {
+    "round": 86,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "idle"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "3879b05b"
+  },
+  {
+   "input": {
+    "round": 87,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "idle"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "idle"
+     }
+    ]
+   },
+   "hash": "a70c2405"
+  },
+  {
+   "input": {
+    "round": 88,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "idle"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "idle"
+     }
+    ]
+   },
+   "hash": "f8e57c2c"
+  },
+  {
+   "input": {
+    "round": 89,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "idle"
+     }
+    ]
+   },
+   "hash": "3e14cea9"
+  },
+  {
+   "input": {
+    "round": 90,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "9253f3e6"
+  },
+  {
+   "input": {
+    "round": 91,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "strike",
+       "target": 12
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "a8b62c49"
+  },
+  {
+   "input": {
+    "round": 92,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "120865d1"
+  },
+  {
+   "input": {
+    "round": 93,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "strike",
+       "target": 11
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "9f4f8f7a"
+  },
+  {
+   "input": {
+    "round": 94,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "strike",
+       "target": 11
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "5e132fba"
+  },
+  {
+   "input": {
+    "round": 95,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "08aed993"
+  },
+  {
+   "input": {
+    "round": 96,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "2eaf249d"
+  },
+  {
+   "input": {
+    "round": 97,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "945f80ad"
+  },
+  {
+   "input": {
+    "round": 98,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "7b38bb1f"
+  },
+  {
+   "input": {
+    "round": 99,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "5611e4fe"
+  },
+  {
+   "input": {
+    "round": 100,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "f37d1f20"
+  },
+  {
+   "input": {
+    "round": 101,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "mine",
+       "target": 3
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "6e0499eb"
+  },
+  {
+   "input": {
+    "round": 102,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "1d086a07"
+  },
+  {
+   "input": {
+    "round": 103,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "mine",
+       "target": 3
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "47fb9809"
+  },
+  {
+   "input": {
+    "round": 104,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "6f218bd2"
+  },
+  {
+   "input": {
+    "round": 105,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "f92bd1eb"
+  },
+  {
+   "input": {
+    "round": 106,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "c7db4e4e"
+  },
+  {
+   "input": {
+    "round": 107,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "d842d04e"
+  },
+  {
+   "input": {
+    "round": 108,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "658462d1"
+  },
+  {
+   "input": {
+    "round": 109,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "7f21753e"
+  },
+  {
+   "input": {
+    "round": 110,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "1aeb0d98"
+  },
+  {
+   "input": {
+    "round": 111,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "deliver",
+       "target": 1
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "f75a84f4"
+  },
+  {
+   "input": {
+    "round": 112,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "97f9573f"
+  },
+  {
+   "input": {
+    "round": 113,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "ac1bf617"
+  },
+  {
+   "input": {
+    "round": 114,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "6bbc23f5"
+  },
+  {
+   "input": {
+    "round": 115,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "deliver",
+       "target": 1
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "e491c3fd"
+  },
+  {
+   "input": {
+    "round": 116,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "ad7ffe16"
+  },
+  {
+   "input": {
+    "round": 117,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "79796aaf"
+  },
+  {
+   "input": {
+    "round": 118,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "6b0cae6c"
+  },
+  {
+   "input": {
+    "round": 119,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "S"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "36d1bfae"
+  },
+  {
+   "input": {
+    "round": 120,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "6b429271"
+  },
+  {
+   "input": {
+    "round": 121,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "d03a7cd6"
+  },
+  {
+   "input": {
+    "round": 122,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "0a59f4ec"
+  },
+  {
+   "input": {
+    "round": 123,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "1cfc4d45"
+  },
+  {
+   "input": {
+    "round": 124,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "W"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "a2cfe000"
+  },
+  {
+   "input": {
+    "round": 125,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "strike",
+       "target": 17
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "strike",
+       "target": 15
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "4c8bec9f"
+  },
+  {
+   "input": {
+    "round": 126,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "idle"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "strike",
+       "target": 15
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "710f11a1"
+  },
+  {
+   "input": {
+    "round": 127,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "idle"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "strike",
+       "target": 14
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "c4a62e3e"
+  },
+  {
+   "input": {
+    "round": 128,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "wait"
+      },
+      "source": "idle"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "strike",
+       "target": 14
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "0604c97c"
+  },
+  {
+   "input": {
+    "round": 129,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "move",
+       "dir": "N"
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "wait"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "a694440f"
+  },
+  {
+   "input": {
+    "round": 130,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "strike",
+       "target": 17
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "10412b91"
+  },
+  {
+   "input": {
+    "round": 131,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "strike",
+       "target": 16
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "376b4948"
+  },
+  {
+   "input": {
+    "round": 132,
+    "actions": [
+     {
+      "actor": 0,
+      "action": {
+       "t": "strike",
+       "target": 16
+      },
+      "source": "controller"
+     },
+     {
+      "actor": 1,
+      "action": {
+       "t": "move",
+       "dir": "E"
+      },
+      "source": "controller"
+     }
+    ]
+   },
+   "hash": "a13c4a71"
+  }
+ ],
+ "checkpoints": [
+  {
+   "round": 50,
+   "state": {
+    "matchId": "golden-1",
+    "mode": "hold",
+    "mapId": "hold-m1",
+    "seed": 1,
+    "round": 50,
+    "nextId": 11,
+    "w": 16,
+    "h": 16,
+    "terrain": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "lit": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "spawns": {
+     "W": [
+      {
+       "x": 1,
+       "y": 6
+      },
+      {
+       "x": 1,
+       "y": 7
+      },
+      {
+       "x": 1,
+       "y": 8
+      },
+      {
+       "x": 1,
+       "y": 9
+      }
+     ],
+     "E": [
+      {
+       "x": 14,
+       "y": 6
+      },
+      {
+       "x": 14,
+       "y": 7
+      },
+      {
+       "x": 14,
+       "y": 8
+      },
+      {
+       "x": 14,
+       "y": 9
+      }
+     ],
+     "N": [
+      {
+       "x": 6,
+       "y": 1
+      },
+      {
+       "x": 7,
+       "y": 1
+      },
+      {
+       "x": 8,
+       "y": 1
+      },
+      {
+       "x": 9,
+       "y": 1
+      }
+     ],
+     "S": []
+    },
+    "respawnList": [
+     {
+      "x": 8,
+      "y": 7
+     },
+     {
+      "x": 9,
+      "y": 8
+     },
+     {
+      "x": 8,
+      "y": 9
+     },
+     {
+      "x": 7,
+      "y": 8
+     },
+     {
+      "x": 8,
+      "y": 6
+     },
+     {
+      "x": 7,
+      "y": 7
+     },
+     {
+      "x": 9,
+      "y": 7
+     },
+     {
+      "x": 6,
+      "y": 8
+     },
+     {
+      "x": 10,
+      "y": 8
+     },
+     {
+      "x": 7,
+      "y": 9
+     },
+     {
+      "x": 9,
+      "y": 9
+     },
+     {
+      "x": 8,
+      "y": 10
+     }
+    ],
+    "actors": [
+     {
+      "id": 0,
+      "team": 0,
+      "role": "lanterner",
+      "pos": {
+       "x": 7,
+       "y": 8
+      },
+      "hp": 3,
+      "fuel": 20,
+      "carrying": 0,
+      "cooldown": 0,
+      "status": "ok",
+      "respawnIn": null
+     },
+     {
+      "id": 1,
+      "team": 0,
+      "role": "lanterner",
+      "pos": {
+       "x": 7,
+       "y": 7
+      },
+      "hp": 1,
+      "fuel": 20,
+      "carrying": 0,
+      "cooldown": 0,
+      "status": "ok",
+      "respawnIn": null
+     }
+    ],
+    "hearth": {
+     "id": 1,
+     "pos": {
+      "x": 8,
+      "y": 8
+     },
+     "fuel": 45
+    },
+    "veins": [
+     {
+      "id": 2,
+      "pos": {
+       "x": 2,
+       "y": 2
+      },
+      "amount": 6
+     },
+     {
+      "id": 3,
+      "pos": {
+       "x": 13,
+       "y": 2
+      },
+      "amount": 5
+     },
+     {
+      "id": 4,
+      "pos": {
+       "x": 8,
+       "y": 5
+      },
+      "amount": 0
+     },
+     {
+      "id": 5,
+      "pos": {
+       "x": 11,
+       "y": 10
+      },
+      "amount": 0
+     },
+     {
+      "id": 6,
+      "pos": {
+       "x": 2,
+       "y": 13
+      },
+      "amount": 5
+     },
+     {
+      "id": 7,
+      "pos": {
+       "x": 13,
+       "y": 13
+      },
+      "amount": 4
+     },
+     {
+      "id": 8,
+      "pos": {
+       "x": 8,
+       "y": 14
+      },
+      "amount": 2
+     }
+    ],
+    "piles": [],
+    "gloom": [],
+    "spawnQueue": [],
+    "result": null,
+    "rng": [
+     2202457769,
+     2190021803,
+     581209152,
+     1434523263
+    ]
+   }
+  },
+  {
+   "round": 100,
+   "state": {
+    "matchId": "golden-1",
+    "mode": "hold",
+    "mapId": "hold-m1",
+    "seed": 1,
+    "round": 100,
+    "nextId": 14,
+    "w": 16,
+    "h": 16,
+    "terrain": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "lit": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "spawns": {
+     "W": [
+      {
+       "x": 1,
+       "y": 6
+      },
+      {
+       "x": 1,
+       "y": 7
+      },
+      {
+       "x": 1,
+       "y": 8
+      },
+      {
+       "x": 1,
+       "y": 9
+      }
+     ],
+     "E": [
+      {
+       "x": 14,
+       "y": 6
+      },
+      {
+       "x": 14,
+       "y": 7
+      },
+      {
+       "x": 14,
+       "y": 8
+      },
+      {
+       "x": 14,
+       "y": 9
+      }
+     ],
+     "N": [
+      {
+       "x": 6,
+       "y": 1
+      },
+      {
+       "x": 7,
+       "y": 1
+      },
+      {
+       "x": 8,
+       "y": 1
+      },
+      {
+       "x": 9,
+       "y": 1
+      }
+     ],
+     "S": []
+    },
+    "respawnList": [
+     {
+      "x": 8,
+      "y": 7
+     },
+     {
+      "x": 9,
+      "y": 8
+     },
+     {
+      "x": 8,
+      "y": 9
+     },
+     {
+      "x": 7,
+      "y": 8
+     },
+     {
+      "x": 8,
+      "y": 6
+     },
+     {
+      "x": 7,
+      "y": 7
+     },
+     {
+      "x": 9,
+      "y": 7
+     },
+     {
+      "x": 6,
+      "y": 8
+     },
+     {
+      "x": 10,
+      "y": 8
+     },
+     {
+      "x": 7,
+      "y": 9
+     },
+     {
+      "x": 9,
+      "y": 9
+     },
+     {
+      "x": 8,
+      "y": 10
+     }
+    ],
+    "actors": [
+     {
+      "id": 0,
+      "team": 0,
+      "role": "lanterner",
+      "pos": {
+       "x": 12,
+       "y": 2
+      },
+      "hp": 2,
+      "fuel": 15,
+      "carrying": 0,
+      "cooldown": 0,
+      "status": "ok",
+      "respawnIn": null
+     },
+     {
+      "id": 1,
+      "team": 0,
+      "role": "lanterner",
+      "pos": {
+       "x": 12,
+       "y": 3
+      },
+      "hp": 3,
+      "fuel": 16,
+      "carrying": 0,
+      "cooldown": 0,
+      "status": "ok",
+      "respawnIn": null
+     }
+    ],
+    "hearth": {
+     "id": 1,
+     "pos": {
+      "x": 8,
+      "y": 8
+     },
+     "fuel": 35
+    },
+    "veins": [
+     {
+      "id": 2,
+      "pos": {
+       "x": 2,
+       "y": 2
+      },
+      "amount": 6
+     },
+     {
+      "id": 3,
+      "pos": {
+       "x": 13,
+       "y": 2
+      },
+      "amount": 5
+     },
+     {
+      "id": 4,
+      "pos": {
+       "x": 8,
+       "y": 5
+      },
+      "amount": 0
+     },
+     {
+      "id": 5,
+      "pos": {
+       "x": 11,
+       "y": 10
+      },
+      "amount": 0
+     },
+     {
+      "id": 6,
+      "pos": {
+       "x": 2,
+       "y": 13
+      },
+      "amount": 5
+     },
+     {
+      "id": 7,
+      "pos": {
+       "x": 13,
+       "y": 13
+      },
+      "amount": 3
+     },
+     {
+      "id": 8,
+      "pos": {
+       "x": 8,
+       "y": 14
+      },
+      "amount": 0
+     }
+    ],
+    "piles": [],
+    "gloom": [],
+    "spawnQueue": [],
+    "result": null,
+    "rng": [
+     2202457769,
+     2190021803,
+     581209152,
+     1434523263
+    ]
+   }
+  }
+ ],
+ "result": "win"
+}

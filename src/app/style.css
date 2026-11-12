@@ -1,0 +1,29 @@
+:root { color-scheme: dark; font-family: system-ui, -apple-system, Segoe UI, sans-serif; background: #0f0e14; color: #f4ead8; }
+body { margin: 0; padding: 12px; }
+header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+header h1 { margin: 0; font-size: 1.4rem; color: #ffcc66; }
+header small { color: #a99; font-weight: normal; font-size: 0.8rem; }
+button { background: #2b2838; color: #f4ead8; border: 1px solid #554e6e; border-radius: 6px; padding: 6px 12px; font: inherit; cursor: pointer; }
+button:hover, button:focus-visible { background: #3a3550; outline: 2px solid #ffcc66; }
+main { display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap; align-items: flex-start; }
+.board-wrap { position: relative; }
+canvas { display: block; border: 2px solid #3b3f4a; border-radius: 4px; image-rendering: pixelated; width: min(90vw, 640px); height: auto; }
+#overlay, #intro { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(10, 8, 16, 0.78); }
+#overlay[hidden], #intro[hidden] { display: none; }
+.card { background: #1d1a28; border: 1px solid #554e6e; border-radius: 10px; padding: 16px 20px; max-width: 520px; line-height: 1.4; }
+.card h1 { color: #ffcc66; margin-top: 0; }
+aside { min-width: 260px; max-width: 340px; font-size: 0.95rem; }
+aside section { background: #1a1824; border: 1px solid #2f2b40; border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; }
+aside h2 { font-size: 1rem; margin: 0 0 6px; color: #ffcc66; }
+aside p { margin: 6px 0; }
+aside ul, aside ol { margin: 0; padding-left: 18px; }
+.bar { position: relative; height: 16px; background: #2a2636; border-radius: 4px; overflow: hidden; margin: 2px 0 6px; }
+.bar span { display: block; height: 100%; }
+.bar b { position: absolute; inset: 0; font-size: 11px; text-align: center; line-height: 16px; }
+.bar.hearth span { background: linear-gradient(90deg, #e2572b, #ffcc66); }
+.bar.hp span { background: #c74848; }
+.bar.fuel span { background: #d9a441; }
+.pending { font-size: 1.1rem; font-weight: bold; color: #5fb8ff; }
+.warn { color: #ff9a6b; font-weight: bold; }
+.msg { color: #ff9a6b; min-height: 1.2em; }
+.log { font-size: 0.8rem; color: #c9bfae; }
